@@ -1243,6 +1243,7 @@ PLT_CtrlPoint::InspectDevice(const NPT_HttpUrl& location,
 {
     NPT_AutoLock lock(m_Lock);
 
+    /*
     // check if already inspecting device
     NPT_String pending_uuid;
     if (NPT_SUCCEEDED(NPT_ContainerFind(m_PendingInspections,
@@ -1250,6 +1251,7 @@ PLT_CtrlPoint::InspectDevice(const NPT_HttpUrl& location,
                                         pending_uuid))) {
         return NPT_SUCCESS;
     }
+    */
     
     NPT_LOG_INFO_2("Inspecting device \"%s\" detected @ %s", 
         uuid, 
@@ -1261,8 +1263,10 @@ PLT_CtrlPoint::InspectDevice(const NPT_HttpUrl& location,
         return NPT_FAILURE;
     }
 
+    /*
     // remember that we're now inspecting the device
     m_PendingInspections.Add(uuid);
+    */
         
     // Start a task to retrieve the description
     PLT_CtrlPointGetDescriptionTask* task = new PLT_CtrlPointGetDescriptionTask(
@@ -1334,8 +1338,10 @@ PLT_CtrlPoint::ProcessGetDescriptionResponse(NPT_Result                    res,
         res,
         response?response->GetStatusCode():0);
 
+    /*
     // Remove pending inspection
     m_PendingInspections.Remove(uuid);
+    */
 
     // verify response was ok
     NPT_CHECK_LABEL_FATAL(res, bad_response);
