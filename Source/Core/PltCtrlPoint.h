@@ -246,7 +246,7 @@ private:
     NPT_String                                   m_SearchCriteria;
     bool                                         m_Started;
     NPT_List<PLT_EventNotification *>            m_PendingNotifications;
-    NPT_List<NPT_String>                         m_PendingInspections;
+    // NPT_List<NPT_String>                         m_PendingInspections;
 };
 
 typedef NPT_Reference<PLT_CtrlPoint> PLT_CtrlPointReference;
